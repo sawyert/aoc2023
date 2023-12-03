@@ -17,4 +17,20 @@ public class FileReader {
         String[] testInputArray = testInput.toArray(new String[0]);
         return testInputArray;
     }
+
+    public static char[][] readGrid(String filename) throws URISyntaxException, IOException {
+        String[] lines = FileReader.read(filename);
+
+        char[][] grid = new char[lines.length][lines[1].length()];
+        int lineNumber = 0;
+        for (String line : lines) {
+            int columnNumber = 0;
+            for (char eachChar : line.toCharArray()) {
+                grid[lineNumber][columnNumber] = eachChar;
+                columnNumber++;
+            }
+            lineNumber++;
+        }
+        return grid;
+    }
 }
