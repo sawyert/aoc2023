@@ -31,8 +31,12 @@ public class Day5 {
     }
 
     public long execute1() {
+        System.out.println("Starting with " + this.seeds.size() + " seeds");
+
         long lowestLocation = 999999999999999999L;
         for (Long seed : this.seeds) {
+            System.out.print(".");
+
             long soil = this.map("seed", "soil", seed);
             long fertilizer = this.map("soil", "fertilizer", soil);
             long water = this.map("fertilizer", "water", fertilizer);
@@ -67,6 +71,36 @@ public class Day5 {
     }
 
     public long execute2() {
-        return 0;
+        long lowestLocation = 999999999999999999L;
+
+        Long[] seedsArray = new Long[this.seeds.size()];
+        int position = 0;
+        for (Long seed : this.seeds) {
+            seedsArray[position] = seed;
+            position++;
+        }
+
+        for (int i=0; i<seedsArray.length; i+=2) {
+            System.out.print(".");
+            long startNumber = seedsArray[i];
+            long length = seedsArray[i+1];
+
+            for (int j=0; j<length;j++) {
+                long seed = startNumber + j;
+
+                long soil = this.map("seed", "soil", seed);
+                long fertilizer = this.map("soil", "fertilizer", soil);
+                long water = this.map("fertilizer", "water", fertilizer);
+                long light = this.map("water", "light", water);
+                long temperature = this.map("light", "temperature", light);
+                long humidity = this.map("temperature", "humidity", temperature);
+                long location = this.map("humidity", "location", humidity);
+
+                if (location < lowestLocation) {
+                    lowestLocation = location;
+                }
+            }
+        }
+        return lowestLocation;
     }
 }
