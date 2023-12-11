@@ -33,20 +33,4 @@ public class Day10Tests {
         Day10 day = new Day10(testInput);
         System.out.println(day.execute1());
     }
-
-    @Test
-    void testPart2BasicInputWorks() throws IOException, URISyntaxException {
-        char[][] testInput = FileReader.readGrid("Day10Example.txt");
-
-        Day10 day = new Day10(testInput);
-        assertEquals(0, day.execute2());
-    }
-
-    @Test
-    void testPart2Answer() throws IOException, URISyntaxException {
-        char[][] testInput = FileReader.readGrid("Day10.txt");
-
-        Day10 day = new Day10(testInput);
-        System.out.println(day.execute2());
-    }
 }

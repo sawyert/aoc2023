@@ -38,8 +38,4 @@ public class Day10 {
         }
         throw new UnsupportedOperationException();
     }
-
-    public long execute2() {
-        return 0;
-    }
 }
